@@ -90,7 +90,7 @@ const MessageList = forwardRef<HTMLDivElement, {messages: Message[]; session: Se
                                         : 'rounded-bl-sm bg-secondary text-light'
                                 } `}
                             >
-                                <span className="text-lg pl-2 ">{message}</span>
+                                <span className="text-lg ">{message}</span>
                             </div>
                             {sender !== session.user?.name && (
                                 <span className="opacity-0 group-hover:opacity-100 text-xs text-dark transition-opacity delay-350">
@@ -122,7 +122,7 @@ const MessageList = forwardRef<HTMLDivElement, {messages: Message[]; session: Se
                                     : 'animate-slide-from-left  rounded-bl-sm bg-secondary text-light'
                             }`}
                         >
-                            <span className="text-lg pl-2 ">{messages.at(-1)?.message}</span>
+                            <span className="text-lg ">{messages.at(-1)?.message}</span>
                         </div>
                         {messages.at(-1)?.sender !== session.user?.name && (
                             <span className="opacity-0 group-hover:opacity-100 text-xs text-dark transition-all delay-350">
