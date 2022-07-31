@@ -2,7 +2,6 @@ import ws from 'ws';
 import {applyWSSHandler} from '@trpc/server/adapters/ws';
 import {appRouter} from './router';
 import {createContext} from './router/context';
-import {handleClientScriptLoad} from 'next/script';
 
 const wss = new ws.Server({
     port: 3001,
