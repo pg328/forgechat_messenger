@@ -49,7 +49,7 @@ const MessageList = forwardRef<HTMLDivElement, {messages: Message[]; session: Se
         <div
             ref={containerRef as any}
             onScroll={onScroll}
-            className="flex flex-col gap-1 flex-1 snap-y overflow-auto scroll-p-1 px-2 pt-1"
+            className="flex flex-col gap-1 flex-1  snap-y overflow-auto scroll-p-1 px-2 pt-1"
         >
             {showScrollButton && (
                 <button
@@ -67,7 +67,7 @@ const MessageList = forwardRef<HTMLDivElement, {messages: Message[]; session: Se
                 return (
                     <div
                         key={id}
-                        className={`group snap-start flex flex-col rounded-xl w-fit p-2 ${
+                        className={`group flex snap-end flex-col max-w-prose rounded-xl break-words w-fit p-2 ${
                             sender === session.user?.name
                                 ? 'self-end rounded-br-sm bg-primary text-light'
                                 : 'rounded-bl-sm bg-secondary text-light'
@@ -84,7 +84,7 @@ const MessageList = forwardRef<HTMLDivElement, {messages: Message[]; session: Se
                 <div
                     ref={ref as LegacyRef<HTMLDivElement>}
                     key={messages.at(-1)!.id}
-                    className={`group snap-start flex flex-col rounded-xl w-fit p-2 ${
+                    className={`group snap-end flex flex-col rounded-xl max-w-prose w-fit p-2 break-words ${
                         messages.at(-1)?.sender === session.user?.name
                             ? 'self-end animate-slide-from-right rounded-br-sm bg-primary text-light'
                             : 'animate-slide-from-left  rounded-bl-sm bg-secondary text-light'
