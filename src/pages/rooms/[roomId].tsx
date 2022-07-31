@@ -147,6 +147,7 @@ const RoomPage = () => {
             });
 
         scrollToLastMessage();
+        setMessage('');
     };
 
     return (
@@ -174,10 +175,11 @@ const RoomPage = () => {
                 <input
                     type="text"
                     placeholder="Message"
+                    value={message}
                     onChange={(e) => {
                         setMessage(e.target.value);
                     }}
-                    className="w-9/12 sm: w-11/12 bg-light placeholder-current rounded-lg p-2 text-2xl border-black border-2"
+                    className="w-9/12 sm:w-11/12 bg-light placeholder-current rounded-lg p-2 text-2xl border-black border-2"
                 ></input>
                 <button type="submit" className="bg-primary text-light rounded-lg p-2 w-3/12 text-2xl">
                     Send
