@@ -17,6 +17,6 @@ COPY . .
 
 RUN yarn prisma generate
 
-EXPOSE 3001
+EXPOSE 443
 
 CMD ["yarn", "dev:ws"]
