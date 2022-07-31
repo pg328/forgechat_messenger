@@ -4,7 +4,7 @@ import {appRouter} from './router';
 import {createContext} from './router/context';
 
 const wss = new ws.Server({
-    port: $PORT,
+    port: parseInt(process.env.PORT || '3001'),
 });
 
 const handler = applyWSSHandler({wss, createContext, router: appRouter});
