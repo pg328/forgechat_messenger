@@ -16,7 +16,7 @@ wss.on('connection', () => {
     });
 });
 
-console.log('WS Server Started!');
+console.log(`WS Server Started, listening on port ${process.env.PORT}`);
 
 process.on('SIGTERM', () => {
     handler.broadcastReconnectNotification();
