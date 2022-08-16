@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  zoo: 
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zoo
+    environment: 
+      - ZOOKEEPER_CLIENT_PORT=2181
+    ports: 
+      - '2181:2181'
+  
+  broker:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: broker
+    ports:
+      - '9092:9092'
+      - '9093:9093'
+    depends_on:
+      - zoo
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zoo:2181
+      - KAFKA_LISTENERS=BROKER://broker:9092,LOCALBROKER://localhost:9093
+      - KAFKA_ADVERTISED_LISTENERS=BROKER://broker:9092,LOCALBROKER://localhost:9093
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_LOG4J_LOGGERS=kafka.controller=ERROR,kafka.foo.bar=ERROR
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=BROKER:PLAINTEXT,LOCALBROKER:PLAINTEXT
+      - KAFKA_LOG4J_ROOT_LOGLEVEL=ERROR
+      - KAFKA_INTER_BROKER_LISTENER_NAME=LOCALBROKER
+  lb: 
+    container_name: lb
+    image: haproxy
+    ports:
+      - '8080:8080'
+    volumes: 
+      - ./haproxy:/usr/local/etc/haproxy
+    depends_on:
+      - broker
+  
+  socket1:
+    image: wss
+    environment:
+      - APPID=1111
+    depends_on:
+      - broker
+
+  socket2:
+    image: wss
+    environment:
+      - APPID=2222
+    depends_on:
+      - broker
+
+  #socket3:
+  #  image: web-socket-server
+  #  environment:
+  #    - APPID=3333
+  #  depends_on:
+  #    - broker
+
+  #socket4:
+  #  image: web-socket-server
+  #  environment:
+  #    - APPID=4444
+  #  depends_on:
+  #    - broker
+
+      

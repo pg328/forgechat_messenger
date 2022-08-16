@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev:ws": "ts-node-dev --project tsconfig.server.json --respawn --transpile-only src/server/wsServer.ts",
+        "dev:ws": "node src/server/router/wsServer.mjs",
         "dev:next": "next dev",
         "dev": "yarn dev:ws & yarn dev:next",
         "build": "next build",
@@ -13,14 +13,14 @@
     },
     "dependencies": {
         "@next-auth/prisma-adapter": "^1.0.3",
-        "@next-auth/react-query": "^0.0.12",
-        "@prisma/client": "^4.0.0",
+        "@prisma/client": "^4.2.1",
         "@trpc/client": "^9.25.3",
         "@trpc/next": "^9.25.3",
         "@trpc/react": "^9.25.3",
         "@trpc/server": "^9.25.3",
         "@types/ws": "^8.5.3",
         "concurrently": "^7.2.2",
+        "kafkajs": "^2.1.0",
         "moment": "^2.29.4",
         "next": "12.2.0",
         "next-auth": "^4.9.0",
@@ -28,9 +28,11 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-query": "^3.39.1",
+        "redis": "^4.2.0",
         "superjson": "^1.9.1",
         "ts-node": "^10.9.1",
         "ts-node-dev": "^2.0.0",
+        "websocket": "^1.0.34",
         "ws": "^8.8.1",
         "yarn-run-all": "^3.1.1",
         "zod": "^3.17.3"
@@ -39,6 +41,7 @@
         "@types/node": "18.0.0",
         "@types/react": "18.0.14",
         "@types/react-dom": "18.0.5",
+        "@types/websocket": "^1.0.5",
         "autoprefixer": "^10.4.7",
         "eslint": "8.18.0",
         "eslint-config-next": "12.1.6",
@@ -46,5 +49,9 @@
         "prisma": "^4.0.0",
         "tailwindcss": "^3.1.5",
         "typescript": "4.7.4"
-    }
+    },
+    "main": "index.js",
+    "repository": "https://github.com/pg328/forgechat_messenger.git",
+    "author": "Philip George <23001002+pg328@users.noreply.github.com>",
+    "license": "MIT"
 }
